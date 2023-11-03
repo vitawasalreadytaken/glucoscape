@@ -110,9 +110,7 @@ async function getSettings(nightscoutUrl: string, token: string): Promise<Settin
     nightscoutTitle: status.settings.customTitle,
     nightscoutUrl,
     displayUnits: status.settings.units,
-    targetRangeMgdl: [status.settings.thresholds.bgTargetBottom, status.settings.thresholds.bgTargetTop].map(
-      (x: number) => x * multiplier
-    ) as [number, number],
+    targetRangeMgdl: [status.settings.thresholds.bgTargetBottom, status.settings.thresholds.bgTargetTop]
   }
 }
 
