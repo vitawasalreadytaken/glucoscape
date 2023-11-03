@@ -1,0 +1,134 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: #333;
+  color: #aaa;
+  font-family: sans-serif;
+  font-size: 16px;
+  padding: 8px;
+}
+
+a {
+  color: #ddd;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+form {
+  padding: 40px;
+
+  h1 {
+    font-size: 50px;
+    margin: 0 0 40px;
+
+    img {
+      display: inline-block;
+      width: 50px;
+      margin-left: 10px;
+      vertical-align: middle;
+      border: 1px solid #ddd;
+    }
+  }
+
+  &,
+  input,
+  button {
+    font-size: 30px;
+  }
+
+  p {
+    margin: 0 0 40px;
+  }
+
+  label {
+    display: block;
+    margin: 0 0 10px;
+  }
+
+  input,
+  button {
+    background: #000;
+    border: 1px solid #aaa;
+    color: #fff;
+    display: block;
+    box-sizing: content-box;
+    padding: 10px;
+    width: 20em;
+  }
+
+  button {
+    background: hsl(98, 32%, 45%);
+    cursor: pointer;
+  }
+}
+
+$box-height: 40px;
+$box-width: 40px;
+
+header {
+  padding-bottom: 8px;
+
+  .spacer {
+    display: inline-block;
+    width: $box-width * 1.2;
+  }
+
+  .target {
+    display: inline-block;
+    margin-left: 3em;
+    font-size: 13px;
+  }
+}
+
+.row {
+  display: flex;
+  align-items: center;
+
+  >* {
+    min-width: $box-width;
+    flex: 1;
+  }
+
+  h2 {
+    font-size: 16px;
+    font-weight: normal;
+    flex: 0 0 $box-width * 1.2;
+  }
+}
+
+.aggregate,
+.summary {
+  border: 1px solid #333;
+  text-align: center;
+  padding: 5px;
+  height: $box-height;
+  line-height: $box-height;
+  color: #000;
+}
+
+.summary {
+  opacity: 70%;
+
+  &.interval,
+  &.total {
+    border-bottom-width: 4px;
+  }
+
+  &.day,
+  &.total {
+    border-right-width: 4px;
+  }
+}
+
+.aggregate {
+  h3 {
+    font-size: 13px;
+    font-weight: normal;
+  }
+}
