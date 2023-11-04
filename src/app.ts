@@ -1,10 +1,9 @@
 import { type GlucoseRecord, type Settings, MMOL_TO_MGDL } from "./data"
+import { DAYS_TO_LOAD, TIMEOUT_STATUS, TIMEOUT_CGM_DATA } from "./settings"
 
 import { renderHeatmap } from "./heatmap"
 
 import "./app.scss"
-
-const DAYS = 14
 
 interface Session {
   nightscoutUrl: string
@@ -102,7 +101,7 @@ async function heatmapView(root: HTMLElement, session: Session): Promise<void> {
     const toDate = new Date()
     toDate.setDate(toDate.getDate() + 1)
     const fromDate = new Date()
-    fromDate.setDate(fromDate.getDate() - DAYS)
+    fromDate.setDate(fromDate.getDate() - DAYS_TO_LOAD)
     glucoseData = await getGlucoseData(session.nightscoutUrl, session.token, fromDate, toDate)
     root.innerHTML += "done<br>"
   }
@@ -123,7 +122,7 @@ async function testConnection(
   console.log(`Making a test request to ${nightscoutUrl}`)
   let response
   try {
-    response = await fetch(`${nightscoutUrl}/api/v1/status.json?token=${token}`, { signal: AbortSignal.timeout(10000) })
+    response = await fetch(`${nightscoutUrl}/api/v1/status.json?token=${token}`, { signal: AbortSignal.timeout(TIMEOUT_STATUS) })
   }
   catch (e) {
     // Most likely a timeout or a CORS error.
@@ -143,7 +142,6 @@ async function testConnection(
   return null
 }
 
-
 async function getGlucoseData(
   nightscoutUrl: string,
   token: string,
@@ -156,7 +154,7 @@ async function getGlucoseData(
     `${nightscoutUrl}/api/v1/entries/sgv.json` +
     `?token=${token}&count=0` +
     `&find[dateString][$gte]=${isoDateFormat(fromDate)}` +
-    `&find[dateString][$lte]=${isoDateFormat(toDate)}`, { signal: AbortSignal.timeout(30000) }
+    `&find[dateString][$lte]=${isoDateFormat(toDate)}`, { signal: AbortSignal.timeout(TIMEOUT_CGM_DATA) }
   )
   return await response.json()
 }
@@ -164,7 +162,7 @@ async function getGlucoseData(
 async function getSettings(nightscoutUrl: string, token: string): Promise<Settings> {
   // Download NS settings and status and cherry-pick the bits we need.
   console.log(`Fetching settings...`)
-  const response = await fetch(`${nightscoutUrl}/api/v1/status.json?token=${token}`, { signal: AbortSignal.timeout(10000) })
+  const response = await fetch(`${nightscoutUrl}/api/v1/status.json?token=${token}`, { signal: AbortSignal.timeout(TIMEOUT_STATUS) })
   const status = await response.json()
   const multiplier = status.settings.units === "mmol" ? MMOL_TO_MGDL : 1
   return {

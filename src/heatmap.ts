@@ -8,12 +8,8 @@ import {
   MMOL_TO_MGDL,
 } from "./data"
 
-const RESOLUTION_SECONDS = 3600 // one hour
+import { RESOLUTION_SECONDS, COLOR_LOW, COLOR_ON_TARGET, COLOR_HIGH, COLOR_MISSING } from "./settings"
 
-const COLOR_LOW = "hsl(359, 47%, 51%)"
-const COLOR_ON_TARGET = "hsl(98, 32%, 45%)"
-const COLOR_HIGH = "hsl(42, 100%, 40%)"
-const COLOR_MISSING = "#999"
 
 export function renderHeatmap(settings: Settings, glucoseData: GlucoseRecord[]): string {
   const byDay = groupByDay(glucoseData)
