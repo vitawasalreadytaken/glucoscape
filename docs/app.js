@@ -21,7 +21,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "* {\n  margin: 0;\n  padding: 0;\n}\n\nbody {\n  background: #333;\n  color: #aaa;\n  font-family: sans-serif;\n  font-size: 16px;\n  padding: 8px;\n}\n\na {\n  color: #ddd;\n  text-decoration: none;\n}\na:hover {\n  text-decoration: underline;\n}\n\nform {\n  padding: 40px;\n}\nform h1 {\n  font-size: 50px;\n  margin: 0 0 40px;\n}\nform h1 img {\n  display: inline-block;\n  width: 50px;\n  margin-left: 10px;\n  vertical-align: middle;\n  border: 1px solid #ddd;\n}\nform,\nform input,\nform button {\n  font-size: 30px;\n}\nform p {\n  margin: 0 0 40px;\n}\nform label {\n  display: block;\n  margin: 0 0 10px;\n}\nform input,\nform button {\n  background: #000;\n  border: 1px solid #aaa;\n  color: #fff;\n  display: block;\n  box-sizing: content-box;\n  padding: 10px;\n  width: 20em;\n}\nform button {\n  background: hsl(98, 32%, 45%);\n  cursor: pointer;\n}\n\nheader {\n  padding-bottom: 8px;\n}\nheader .spacer {\n  display: inline-block;\n  width: 48px;\n}\nheader .target {\n  display: inline-block;\n  margin-left: 3em;\n  font-size: 13px;\n}\n\n.row {\n  display: flex;\n  align-items: center;\n}\n.row > * {\n  min-width: 40px;\n  flex: 1;\n}\n.row h2 {\n  font-size: 16px;\n  font-weight: normal;\n  flex: 0 0 48px;\n}\n\n.aggregate,\n.summary {\n  border: 1px solid #333;\n  text-align: center;\n  padding: 5px;\n  height: 40px;\n  line-height: 40px;\n  color: #000;\n}\n\n.summary {\n  opacity: 70%;\n}\n.summary.interval, .summary.total {\n  border-bottom-width: 4px;\n}\n.summary.day, .summary.total {\n  border-right-width: 4px;\n}\n\n.aggregate h3 {\n  font-size: 13px;\n  font-weight: normal;\n}", "",{"version":3,"sources":["webpack://./src/app.scss"],"names":[],"mappings":"AAAA;EACE,SAAA;EACA,UAAA;AACF;;AAEA;EACE,gBAAA;EACA,WAAA;EACA,uBAAA;EACA,eAAA;EACA,YAAA;AACF;;AAEA;EACE,WAAA;EACA,qBAAA;AACF;AACE;EACE,0BAAA;AACJ;;AAGA;EACE,aAAA;AAAF;AAEE;EACE,eAAA;EACA,gBAAA;AAAJ;AAEI;EACE,qBAAA;EACA,WAAA;EACA,iBAAA;EACA,sBAAA;EACA,sBAAA;AAAN;AAIE;;;EAGE,eAAA;AAFJ;AAKE;EACE,gBAAA;AAHJ;AAME;EACE,cAAA;EACA,gBAAA;AAJJ;AAOE;;EAEE,gBAAA;EACA,sBAAA;EACA,WAAA;EACA,cAAA;EACA,uBAAA;EACA,aAAA;EACA,WAAA;AALJ;AAQE;EACE,6BAAA;EACA,eAAA;AANJ;;AAaA;EACE,mBAAA;AAVF;AAYE;EACE,qBAAA;EACA,WAAA;AAVJ;AAaE;EACE,qBAAA;EACA,gBAAA;EACA,eAAA;AAXJ;;AAeA;EACE,aAAA;EACA,mBAAA;AAZF;AAcE;EACE,eAtBQ;EAuBR,OAAA;AAZJ;AAeE;EACE,eAAA;EACA,mBAAA;EACA,cAAA;AAbJ;;AAiBA;;EAEE,sBAAA;EACA,kBAAA;EACA,YAAA;EACA,YAvCW;EAwCX,iBAxCW;EAyCX,WAAA;AAdF;;AAiBA;EACE,YAAA;AAdF;AAgBE;EAEE,wBAAA;AAfJ;AAkBE;EAEE,uBAAA;AAjBJ;;AAsBE;EACE,eAAA;EACA,mBAAA;AAnBJ","sourcesContent":["* {\n  margin: 0;\n  padding: 0;\n}\n\nbody {\n  background: #333;\n  color: #aaa;\n  font-family: sans-serif;\n  font-size: 16px;\n  padding: 8px;\n}\n\na {\n  color: #ddd;\n  text-decoration: none;\n\n  &:hover {\n    text-decoration: underline;\n  }\n}\n\nform {\n  padding: 40px;\n\n  h1 {\n    font-size: 50px;\n    margin: 0 0 40px;\n\n    img {\n      display: inline-block;\n      width: 50px;\n      margin-left: 10px;\n      vertical-align: middle;\n      border: 1px solid #ddd;\n    }\n  }\n\n  &,\n  input,\n  button {\n    font-size: 30px;\n  }\n\n  p {\n    margin: 0 0 40px;\n  }\n\n  label {\n    display: block;\n    margin: 0 0 10px;\n  }\n\n  input,\n  button {\n    background: #000;\n    border: 1px solid #aaa;\n    color: #fff;\n    display: block;\n    box-sizing: content-box;\n    padding: 10px;\n    width: 20em;\n  }\n\n  button {\n    background: hsl(98, 32%, 45%);\n    cursor: pointer;\n  }\n}\n\n$box-height: 40px;\n$box-width: 40px;\n\nheader {\n  padding-bottom: 8px;\n\n  .spacer {\n    display: inline-block;\n    width: $box-width * 1.2;\n  }\n\n  .target {\n    display: inline-block;\n    margin-left: 3em;\n    font-size: 13px;\n  }\n}\n\n.row {\n  display: flex;\n  align-items: center;\n\n  >* {\n    min-width: $box-width;\n    flex: 1;\n  }\n\n  h2 {\n    font-size: 16px;\n    font-weight: normal;\n    flex: 0 0 $box-width * 1.2;\n  }\n}\n\n.aggregate,\n.summary {\n  border: 1px solid #333;\n  text-align: center;\n  padding: 5px;\n  height: $box-height;\n  line-height: $box-height;\n  color: #000;\n}\n\n.summary {\n  opacity: 70%;\n\n  &.interval,\n  &.total {\n    border-bottom-width: 4px;\n  }\n\n  &.day,\n  &.total {\n    border-right-width: 4px;\n  }\n}\n\n.aggregate {\n  h3 {\n    font-size: 13px;\n    font-weight: normal;\n  }\n}\n"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, "* {\n  margin: 0;\n  padding: 0;\n}\n\nbody {\n  background: #333;\n  color: #aaa;\n  font-family: sans-serif;\n  font-size: 16px;\n  padding: 8px;\n}\n\na {\n  color: #ddd;\n  text-decoration: none;\n}\na:hover {\n  text-decoration: underline;\n}\n\nform {\n  padding: 40px;\n}\nform h1 {\n  font-size: 50px;\n  margin: 0 0 40px;\n}\nform h1 img {\n  display: inline-block;\n  width: 50px;\n  margin-left: 10px;\n  vertical-align: middle;\n  border: 1px solid #ddd;\n}\nform,\nform input,\nform button {\n  font-size: 30px;\n}\nform p {\n  margin: 0 0 50px;\n}\nform label {\n  display: block;\n  margin: 0 0 10px;\n}\nform small {\n  display: block;\n  font-size: 20px;\n  margin: 10px 0 0;\n}\nform input,\nform button {\n  background: #000;\n  border: 1px solid #aaa;\n  color: #fff;\n  display: block;\n  box-sizing: content-box;\n  padding: 10px;\n  width: 20em;\n}\nform button {\n  background: hsl(98, 32%, 45%);\n  cursor: pointer;\n}\nform button:disabled {\n  background: hsl(98, 32%, 25%);\n  cursor: default;\n}\n\nheader {\n  padding-bottom: 8px;\n}\nheader .spacer {\n  display: inline-block;\n  width: 48px;\n}\nheader .target {\n  display: inline-block;\n  margin-left: 3em;\n  font-size: 13px;\n}\n\n.row {\n  display: flex;\n  align-items: center;\n}\n.row > * {\n  min-width: 40px;\n  flex: 1;\n}\n.row h2 {\n  font-size: 16px;\n  font-weight: normal;\n  flex: 0 0 48px;\n}\n\n.aggregate,\n.summary {\n  border: 1px solid #333;\n  text-align: center;\n  padding: 5px;\n  height: 40px;\n  line-height: 40px;\n  color: #000;\n}\n\n.summary {\n  opacity: 70%;\n}\n.summary.interval, .summary.total {\n  border-bottom-width: 4px;\n}\n.summary.day, .summary.total {\n  border-right-width: 4px;\n}\n\n.aggregate h3 {\n  font-size: 13px;\n  font-weight: normal;\n}", "",{"version":3,"sources":["webpack://./src/app.scss"],"names":[],"mappings":"AAAA;EACE,SAAA;EACA,UAAA;AACF;;AAEA;EACE,gBAAA;EACA,WAAA;EACA,uBAAA;EACA,eAAA;EACA,YAAA;AACF;;AAEA;EACE,WAAA;EACA,qBAAA;AACF;AACE;EACE,0BAAA;AACJ;;AAGA;EACE,aAAA;AAAF;AAEE;EACE,eAAA;EACA,gBAAA;AAAJ;AAEI;EACE,qBAAA;EACA,WAAA;EACA,iBAAA;EACA,sBAAA;EACA,sBAAA;AAAN;AAIE;;;EAGE,eAAA;AAFJ;AAKE;EACE,gBAAA;AAHJ;AAME;EACE,cAAA;EACA,gBAAA;AAJJ;AAOE;EACE,cAAA;EACA,eAAA;EACA,gBAAA;AALJ;AASE;;EAEE,gBAAA;EACA,sBAAA;EACA,WAAA;EACA,cAAA;EACA,uBAAA;EACA,aAAA;EACA,WAAA;AAPJ;AAUE;EACE,6BAAA;EACA,eAAA;AARJ;AAUI;EACE,6BAAA;EACA,eAAA;AARN;;AAgBA;EACE,mBAAA;AAbF;AAeE;EACE,qBAAA;EACA,WAAA;AAbJ;AAgBE;EACE,qBAAA;EACA,gBAAA;EACA,eAAA;AAdJ;;AAkBA;EACE,aAAA;EACA,mBAAA;AAfF;AAiBE;EACE,eAtBQ;EAuBR,OAAA;AAfJ;AAkBE;EACE,eAAA;EACA,mBAAA;EACA,cAAA;AAhBJ;;AAoBA;;EAEE,sBAAA;EACA,kBAAA;EACA,YAAA;EACA,YAvCW;EAwCX,iBAxCW;EAyCX,WAAA;AAjBF;;AAoBA;EACE,YAAA;AAjBF;AAmBE;EAEE,wBAAA;AAlBJ;AAqBE;EAEE,uBAAA;AApBJ;;AAyBE;EACE,eAAA;EACA,mBAAA;AAtBJ","sourcesContent":["* {\n  margin: 0;\n  padding: 0;\n}\n\nbody {\n  background: #333;\n  color: #aaa;\n  font-family: sans-serif;\n  font-size: 16px;\n  padding: 8px;\n}\n\na {\n  color: #ddd;\n  text-decoration: none;\n\n  &:hover {\n    text-decoration: underline;\n  }\n}\n\nform {\n  padding: 40px;\n\n  h1 {\n    font-size: 50px;\n    margin: 0 0 40px;\n\n    img {\n      display: inline-block;\n      width: 50px;\n      margin-left: 10px;\n      vertical-align: middle;\n      border: 1px solid #ddd;\n    }\n  }\n\n  &,\n  input,\n  button {\n    font-size: 30px;\n  }\n\n  p {\n    margin: 0 0 50px;\n  }\n\n  label {\n    display: block;\n    margin: 0 0 10px;\n  }\n\n  small {\n    display: block;\n    font-size: 20px;\n    margin: 10px 0 0;\n  }\n\n\n  input,\n  button {\n    background: #000;\n    border: 1px solid #aaa;\n    color: #fff;\n    display: block;\n    box-sizing: content-box;\n    padding: 10px;\n    width: 20em;\n  }\n\n  button {\n    background: hsl(98, 32%, 45%);\n    cursor: pointer;\n\n    &:disabled {\n      background: hsl(98, 32%, 25%);\n      cursor: default;\n    }\n  }\n}\n\n$box-height: 40px;\n$box-width: 40px;\n\nheader {\n  padding-bottom: 8px;\n\n  .spacer {\n    display: inline-block;\n    width: $box-width * 1.2;\n  }\n\n  .target {\n    display: inline-block;\n    margin-left: 3em;\n    font-size: 13px;\n  }\n}\n\n.row {\n  display: flex;\n  align-items: center;\n\n  >* {\n    min-width: $box-width;\n    flex: 1;\n  }\n\n  h2 {\n    font-size: 16px;\n    font-weight: normal;\n    flex: 0 0 $box-width * 1.2;\n  }\n}\n\n.aggregate,\n.summary {\n  border: 1px solid #333;\n  text-align: center;\n  padding: 5px;\n  height: $box-height;\n  line-height: $box-height;\n  color: #000;\n}\n\n.summary {\n  opacity: 70%;\n\n  &.interval,\n  &.total {\n    border-bottom-width: 4px;\n  }\n\n  &.day,\n  &.total {\n    border-right-width: 4px;\n  }\n}\n\n.aggregate {\n  h3 {\n    font-size: 13px;\n    font-weight: normal;\n  }\n}\n"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -18467,9 +18467,9 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 const data_1 = __webpack_require__(/*! ./data */ "./src/data.ts");
+const settings_1 = __webpack_require__(/*! ./settings */ "./src/settings.ts");
 const heatmap_1 = __webpack_require__(/*! ./heatmap */ "./src/heatmap.ts");
 __webpack_require__(/*! ./app.scss */ "./src/app.scss");
-const DAYS = 14;
 function main() {
     return __awaiter(this, void 0, void 0, function* () {
         const root = document.getElementById("app");
@@ -18477,10 +18477,12 @@ function main() {
             console.error("Could not find root element (#app)");
             return;
         }
+        // Check if we have a session stored in the URL.
         if (!window.location.hash.startsWith("#session=")) {
             loginView(root);
             return;
         }
+        // Check that we can parse it.
         let session;
         try {
             session = JSON.parse(decodeURIComponent(window.location.hash.substring(9)));
@@ -18490,10 +18492,18 @@ function main() {
             loginView(root);
             return;
         }
+        // Check that the session is valid and we can connect to Nightscout.
+        const connectionTestResult = yield testConnection(session.nightscoutUrl, session.token);
+        if (connectionTestResult !== null) {
+            alert(connectionTestResult);
+            window.location.hash = "";
+            loginView(root, session);
+            return;
+        }
         yield heatmapView(root, session);
     });
 }
-function loginView(root) {
+function loginView(root, prefilledSession = null) {
     root.innerHTML = `
     <form>
       <h1>
@@ -18502,14 +18512,21 @@ function loginView(root) {
       </h1>
       <p>
         <label for="nightscoutUrl">Your Nightscout address</label>
-        <input type="text" id="nightscoutUrl" name="nightscoutUrl" placeholder="https://nightscout.example.com">
+        <input type="text" id="nightscoutUrl" name="nightscoutUrl"
+          placeholder="https://nightscout.example.com" autofocus
+          value="${(prefilledSession === null || prefilledSession === void 0 ? void 0 : prefilledSession.nightscoutUrl) || ""}">
+        <small>
+          Note:
+          <a target="_blank" href="https://nightscout.github.io/nightscout/setup_variables/#cors-cors">CORS must be enabled</a>
+          on your Nightscout server.
+        </small>
       </p>
       <p>
         <label for="token">Authentication token</label>
-        <input type="text" id="token" name="token">
+        <input type="text" id="token" name="token" value="${(prefilledSession === null || prefilledSession === void 0 ? void 0 : prefilledSession.token) || ""}">
       </p>
       <p>
-        <button type="submit">Connect to Nightscout</button>
+        <button type="submit" id="submitButton">Connect to Nightscout</button>
       </p>
     </form>
   `;
@@ -18523,22 +18540,63 @@ function loginView(root) {
         }
         const session = { nightscoutUrl, token };
         window.location.hash = `#session=${encodeURIComponent(JSON.stringify(session))}`;
+        const submitButton = document.getElementById("submitButton");
+        submitButton.disabled = true;
+        submitButton.innerText = "Connecting to Nightscout...";
         void main();
     });
 }
 function heatmapView(root, session) {
     return __awaiter(this, void 0, void 0, function* () {
-        root.innerHTML = `Loading settings from ${session.nightscoutUrl}...`;
-        const settings = yield getSettings(session.nightscoutUrl, session.token);
-        root.innerHTML += "done<br>";
-        root.innerText += `Loading glucose data from ${session.nightscoutUrl}...`;
-        const toDate = new Date();
-        toDate.setDate(toDate.getDate() + 1);
-        const fromDate = new Date();
-        fromDate.setDate(fromDate.getDate() - DAYS);
-        const glucoseData = yield getGlucoseData(session.nightscoutUrl, session.token, fromDate, toDate);
-        root.innerHTML += "done<br>";
+        let settings;
+        let glucoseData;
+        try {
+            // Settings
+            root.innerHTML = `Loading settings from ${session.nightscoutUrl}...`;
+            settings = yield getSettings(session.nightscoutUrl, session.token);
+            root.innerHTML += "done<br>";
+            // Glucose data
+            root.innerText += `Loading glucose data from ${session.nightscoutUrl}...`;
+            const toDate = new Date();
+            toDate.setDate(toDate.getDate() + 1);
+            const fromDate = new Date();
+            fromDate.setDate(fromDate.getDate() - settings_1.DAYS_TO_LOAD);
+            glucoseData = yield getGlucoseData(session.nightscoutUrl, session.token, fromDate, toDate);
+            root.innerHTML += "done<br>";
+        }
+        catch (e) {
+            console.error(e);
+            root.innerHTML += `<br><strong style="color: hsl(359, 47%, 51%)">Error loading data from Nightscout: ${e}</strong><br>`;
+            return;
+        }
+        // Render
         root.innerHTML = (0, heatmap_1.renderHeatmap)(settings, glucoseData);
+    });
+}
+function testConnection(nightscoutUrl, token) {
+    return __awaiter(this, void 0, void 0, function* () {
+        // Check that we can connect to Nightscout.
+        console.log(`Making a test request to ${nightscoutUrl}`);
+        let response;
+        try {
+            response = yield fetch(`${nightscoutUrl}/api/v1/status.json?token=${token}`, { signal: AbortSignal.timeout(settings_1.TIMEOUT_STATUS) });
+        }
+        catch (e) {
+            // Most likely a timeout or a CORS error.
+            // Oddly, it also times out when the token doesn't have the right roles.
+            console.error(e);
+            return `Cannot connect to ${nightscoutUrl}.
+    Is the address correct?
+    Is CORS enabled on your Nightscout server?
+    Does the authentication token have the "readable" role?`;
+        }
+        if (response.status === 401) {
+            return `Authentication failed. Is the authentication token correct?`;
+        }
+        if (!response.ok) {
+            return `We cannot load data from ${nightscoutUrl} for unknown reasons :( Error code: ${response.status}`;
+        }
+        return null;
     });
 }
 function getGlucoseData(nightscoutUrl, token, fromDate, toDate) {
@@ -18548,7 +18606,7 @@ function getGlucoseData(nightscoutUrl, token, fromDate, toDate) {
         const response = yield fetch(`${nightscoutUrl}/api/v1/entries/sgv.json` +
             `?token=${token}&count=0` +
             `&find[dateString][$gte]=${isoDateFormat(fromDate)}` +
-            `&find[dateString][$lte]=${isoDateFormat(toDate)}`);
+            `&find[dateString][$lte]=${isoDateFormat(toDate)}`, { signal: AbortSignal.timeout(settings_1.TIMEOUT_CGM_DATA) });
         return yield response.json();
     });
 }
@@ -18556,7 +18614,7 @@ function getSettings(nightscoutUrl, token) {
     return __awaiter(this, void 0, void 0, function* () {
         // Download NS settings and status and cherry-pick the bits we need.
         console.log(`Fetching settings...`);
-        const response = yield fetch(`${nightscoutUrl}/api/v1/status.json?token=${token}`);
+        const response = yield fetch(`${nightscoutUrl}/api/v1/status.json?token=${token}`, { signal: AbortSignal.timeout(settings_1.TIMEOUT_STATUS) });
         const status = yield response.json();
         const multiplier = status.settings.units === "mmol" ? data_1.MMOL_TO_MGDL : 1;
         return {
@@ -18673,11 +18731,7 @@ function calculateMissingDataCount(records) {
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.renderHeatmap = void 0;
 const data_1 = __webpack_require__(/*! ./data */ "./src/data.ts");
-const RESOLUTION_SECONDS = 3600; // one hour
-const COLOR_LOW = "hsl(359, 47%, 51%)";
-const COLOR_ON_TARGET = "hsl(98, 32%, 45%)";
-const COLOR_HIGH = "hsl(42, 100%, 40%)";
-const COLOR_MISSING = "#999";
+const settings_1 = __webpack_require__(/*! ./settings */ "./src/settings.ts");
 function renderHeatmap(settings, glucoseData) {
     const byDay = (0, data_1.groupByDay)(glucoseData);
     const rows = Object.entries(byDay).map(([day, records]) => renderRow(settings, day, records));
@@ -18703,9 +18757,9 @@ function renderHeader(settings) {
   `;
 }
 function renderIntervalSummaryRow(settings, records) {
-    const byInterval = (0, data_1.groupByInterval)(records, RESOLUTION_SECONDS); // Group by interval across all days
+    const byInterval = (0, data_1.groupByInterval)(records, settings_1.RESOLUTION_SECONDS); // Group by interval across all days
     const aggregates = [];
-    for (let i = 0; i < (24 * 3600) / RESOLUTION_SECONDS; i++) {
+    for (let i = 0; i < (24 * 3600) / settings_1.RESOLUTION_SECONDS; i++) {
         const recordsInInterval = byInterval[String(i)];
         aggregates.push(renderSummary(settings, recordsInInterval, "interval"));
     }
@@ -18740,12 +18794,12 @@ function renderSummary(settings, records, className) {
     `;
 }
 function renderAggregates(settings, records) {
-    const byInterval = (0, data_1.groupByInterval)(records, RESOLUTION_SECONDS);
+    const byInterval = (0, data_1.groupByInterval)(records, settings_1.RESOLUTION_SECONDS);
     const aggregates = [];
-    for (let i = 0; i < (24 * 3600) / RESOLUTION_SECONDS; i++) {
+    for (let i = 0; i < (24 * 3600) / settings_1.RESOLUTION_SECONDS; i++) {
         const recordsInInterval = byInterval[String(i)];
         let title = "";
-        let background = COLOR_MISSING;
+        let background = settings_1.COLOR_MISSING;
         if (recordsInInterval != null) {
             const stats = (0, data_1.calculateGlucoseStatistics)(recordsInInterval, settings.targetRangeMgdl);
             title = generateTitle(stats);
@@ -18770,10 +18824,10 @@ function generateGradient(stats) {
     const onTargetEnd = stats.rangePercentages.low + stats.rangePercentages.onTarget;
     const highEnd = onTargetEnd + stats.rangePercentages.high;
     const color = [
-        `${COLOR_LOW} 0%, ${COLOR_LOW} ${stats.rangePercentages.low}%`,
-        `${COLOR_ON_TARGET} ${stats.rangePercentages.low}%, ${COLOR_ON_TARGET} ${onTargetEnd}%`,
-        `${COLOR_HIGH} ${onTargetEnd}%, ${COLOR_HIGH} ${highEnd}%`,
-        `${COLOR_MISSING} ${highEnd}%, ${COLOR_MISSING} 100%`,
+        `${settings_1.COLOR_LOW} 0%, ${settings_1.COLOR_LOW} ${stats.rangePercentages.low}%`,
+        `${settings_1.COLOR_ON_TARGET} ${stats.rangePercentages.low}%, ${settings_1.COLOR_ON_TARGET} ${onTargetEnd}%`,
+        `${settings_1.COLOR_HIGH} ${onTargetEnd}%, ${settings_1.COLOR_HIGH} ${highEnd}%`,
+        `${settings_1.COLOR_MISSING} ${highEnd}%, ${settings_1.COLOR_MISSING} 100%`,
     ].join(", ");
     return `linear-gradient(to top, ${color})`;
 }
@@ -18791,6 +18845,31 @@ function formatTime(hour) {
 // 	const hue = percentage * (maxHue - minHue) + minHue;
 // 	return `hsl(${hue}, 100%, 50%)`;
 // }
+
+
+/***/ }),
+
+/***/ "./src/settings.ts":
+/*!*************************!*\
+  !*** ./src/settings.ts ***!
+  \*************************/
+/***/ ((__unused_webpack_module, exports) => {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.COLOR_MISSING = exports.COLOR_HIGH = exports.COLOR_ON_TARGET = exports.COLOR_LOW = exports.RESOLUTION_SECONDS = exports.DAYS_TO_LOAD = exports.TIMEOUT_CGM_DATA = exports.TIMEOUT_STATUS = void 0;
+// API request timeouts
+exports.TIMEOUT_STATUS = 10000;
+exports.TIMEOUT_CGM_DATA = 30000;
+// How many days of CGM data to load
+exports.DAYS_TO_LOAD = 14;
+// Visualization preferences
+exports.RESOLUTION_SECONDS = 3600; // one hour; beware that the heatmap doesn't quite work for values other than 1 hour
+exports.COLOR_LOW = "hsl(359, 47%, 51%)";
+exports.COLOR_ON_TARGET = "hsl(98, 32%, 45%)";
+exports.COLOR_HIGH = "hsl(42, 100%, 40%)";
+exports.COLOR_MISSING = "#999";
 
 
 /***/ })
