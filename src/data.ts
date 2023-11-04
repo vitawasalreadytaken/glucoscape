@@ -9,6 +9,7 @@ export interface Settings {
   nightscoutUrl: string
   displayUnits: "mgdl" | "mmol"
   targetRangeMgdl: [number, number]
+  targetRangeUnit: "mgdl" | "mmol"
 }
 
 export interface GlucoseRecord {

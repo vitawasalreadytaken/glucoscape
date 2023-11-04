@@ -105,12 +105,16 @@ async function getSettings(nightscoutUrl: string, token: string): Promise<Settin
   console.log(`Fetching settings...`)
   const response = await fetch(`${nightscoutUrl}/api/v1/status.json?token=${token}`)
   const status = await response.json()
-  const multiplier = status.settings.units === "mmol" ? MMOL_TO_MGDL : 1
+  const targetRangeUnit = status.settings.thresholds.bgTargetTop > 30 ? "mgdl" : "mmol"
+  const multiplier = status.settings.units === "mmol" && targetRangeUnit == "mmol" ? MMOL_TO_MGDL : 1
   return {
     nightscoutTitle: status.settings.customTitle,
     nightscoutUrl,
     displayUnits: status.settings.units,
-    targetRangeMgdl: [status.settings.thresholds.bgTargetBottom, status.settings.thresholds.bgTargetTop]
+    targetRangeMgdl: [status.settings.thresholds.bgTargetBottom, status.settings.thresholds.bgTargetTop].map(
+      (x: number) => x * multiplier
+    ) as [number, number],
+    targetRangeUnit,
   }
 }
 
