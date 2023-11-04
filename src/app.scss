@@ -43,13 +43,20 @@ form {
   }
 
   p {
-    margin: 0 0 40px;
+    margin: 0 0 50px;
   }
 
   label {
     display: block;
     margin: 0 0 10px;
   }
+
+  small {
+    display: block;
+    font-size: 20px;
+    margin: 10px 0 0;
+  }
+
 
   input,
   button {
@@ -65,6 +72,11 @@ form {
   button {
     background: hsl(98, 32%, 45%);
     cursor: pointer;
+
+    &:disabled {
+      background: hsl(98, 32%, 25%);
+      cursor: default;
+    }
   }
 }
 

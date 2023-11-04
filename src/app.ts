@@ -18,10 +18,12 @@ async function main(): Promise<void> {
     return
   }
 
+  // Check if we have a session stored in the URL.
   if (!window.location.hash.startsWith("#session=")) {
     loginView(root)
     return
   }
+  // Check that we can parse it.
   let session
   try {
     session = JSON.parse(decodeURIComponent(window.location.hash.substring(9))) as Session
@@ -30,10 +32,19 @@ async function main(): Promise<void> {
     loginView(root)
     return
   }
+  // Check that the session is valid and we can connect to Nightscout.
+  const connectionTestResult = await testConnection(session.nightscoutUrl, session.token)
+  if (connectionTestResult !== null) {
+    alert(connectionTestResult)
+    window.location.hash = ""
+    loginView(root, session)
+    return
+  }
+
   await heatmapView(root, session)
 }
 
-function loginView(root: HTMLElement): void {
+function loginView(root: HTMLElement, prefilledSession: Session | null = null): void {
   root.innerHTML = `
     <form>
       <h1>
@@ -42,14 +53,21 @@ function loginView(root: HTMLElement): void {
       </h1>
       <p>
         <label for="nightscoutUrl">Your Nightscout address</label>
-        <input type="text" id="nightscoutUrl" name="nightscoutUrl" placeholder="https://nightscout.example.com">
+        <input type="text" id="nightscoutUrl" name="nightscoutUrl"
+          placeholder="https://nightscout.example.com" autofocus
+          value="${prefilledSession?.nightscoutUrl || ""}">
+        <small>
+          Note:
+          <a target="_blank" href="https://nightscout.github.io/nightscout/setup_variables/#cors-cors">CORS must be enabled</a>
+          on your Nightscout server.
+        </small>
       </p>
       <p>
         <label for="token">Authentication token</label>
-        <input type="text" id="token" name="token">
+        <input type="text" id="token" name="token" value="${prefilledSession?.token || ""}">
       </p>
       <p>
-        <button type="submit">Connect to Nightscout</button>
+        <button type="submit" id="submitButton">Connect to Nightscout</button>
       </p>
     </form>
   `
@@ -63,25 +81,68 @@ function loginView(root: HTMLElement): void {
     }
     const session = { nightscoutUrl, token }
     window.location.hash = `#session=${encodeURIComponent(JSON.stringify(session))}`
+    const submitButton = document.getElementById("submitButton") as HTMLButtonElement
+    submitButton.disabled = true
+    submitButton.innerText = "Connecting to Nightscout..."
     void main()
   })
 }
 
 async function heatmapView(root: HTMLElement, session: Session): Promise<void> {
-  root.innerHTML = `Loading settings from ${session.nightscoutUrl}...`
-  const settings = await getSettings(session.nightscoutUrl, session.token)
-  root.innerHTML += "done<br>"
+  let settings: Settings
+  let glucoseData: GlucoseRecord[]
 
-  root.innerText += `Loading glucose data from ${session.nightscoutUrl}...`
-  const toDate = new Date()
-  toDate.setDate(toDate.getDate() + 1)
-  const fromDate = new Date()
-  fromDate.setDate(fromDate.getDate() - DAYS)
-  const glucoseData = await getGlucoseData(session.nightscoutUrl, session.token, fromDate, toDate)
-  root.innerHTML += "done<br>"
-
+  try {
+    // Settings
+    root.innerHTML = `Loading settings from ${session.nightscoutUrl}...`
+    settings = await getSettings(session.nightscoutUrl, session.token)
+    root.innerHTML += "done<br>"
+    // Glucose data
+    root.innerText += `Loading glucose data from ${session.nightscoutUrl}...`
+    const toDate = new Date()
+    toDate.setDate(toDate.getDate() + 1)
+    const fromDate = new Date()
+    fromDate.setDate(fromDate.getDate() - DAYS)
+    glucoseData = await getGlucoseData(session.nightscoutUrl, session.token, fromDate, toDate)
+    root.innerHTML += "done<br>"
+  }
+  catch (e) {
+    console.error(e)
+    root.innerHTML += `<br><strong style="color: hsl(359, 47%, 51%)">Error loading data from Nightscout: ${e}</strong><br>`
+    return
+  }
+  // Render
   root.innerHTML = renderHeatmap(settings, glucoseData)
 }
+
+async function testConnection(
+  nightscoutUrl: string,
+  token: string,
+): Promise<null | string> {
+  // Check that we can connect to Nightscout.
+  console.log(`Making a test request to ${nightscoutUrl}`)
+  let response
+  try {
+    response = await fetch(`${nightscoutUrl}/api/v1/status.json?token=${token}`, { signal: AbortSignal.timeout(10000) })
+  }
+  catch (e) {
+    // Most likely a timeout or a CORS error.
+    // Oddly, it also times out when the token doesn't have the right roles.
+    console.error(e)
+    return `Cannot connect to ${nightscoutUrl}.
+    Is the address correct?
+    Is CORS enabled on your Nightscout server?
+    Does the authentication token have the "readable" role?`
+  }
+  if (response.status === 401) {
+    return `Authentication failed. Is the authentication token correct?`
+  }
+  if (!response.ok) {
+    return `We cannot load data from ${nightscoutUrl} for unknown reasons :( Error code: ${response.status}`
+  }
+  return null
+}
+
 
 async function getGlucoseData(
   nightscoutUrl: string,
@@ -93,9 +154,9 @@ async function getGlucoseData(
   console.log(`Fetching glucose data from ${isoDateFormat(fromDate)} to ${isoDateFormat(toDate)}`)
   const response = await fetch(
     `${nightscoutUrl}/api/v1/entries/sgv.json` +
-      `?token=${token}&count=0` +
-      `&find[dateString][$gte]=${isoDateFormat(fromDate)}` +
-      `&find[dateString][$lte]=${isoDateFormat(toDate)}`
+    `?token=${token}&count=0` +
+    `&find[dateString][$gte]=${isoDateFormat(fromDate)}` +
+    `&find[dateString][$lte]=${isoDateFormat(toDate)}`, { signal: AbortSignal.timeout(30000) }
   )
   return await response.json()
 }
@@ -103,7 +164,7 @@ async function getGlucoseData(
 async function getSettings(nightscoutUrl: string, token: string): Promise<Settings> {
   // Download NS settings and status and cherry-pick the bits we need.
   console.log(`Fetching settings...`)
-  const response = await fetch(`${nightscoutUrl}/api/v1/status.json?token=${token}`)
+  const response = await fetch(`${nightscoutUrl}/api/v1/status.json?token=${token}`, { signal: AbortSignal.timeout(10000) })
   const status = await response.json()
   const multiplier = status.settings.units === "mmol" ? MMOL_TO_MGDL : 1
   return {
