@@ -18,14 +18,18 @@ Glucoscape is a small application that helps visualize Continuous Glucose Monito
 
 ## Getting Started
 
-To provide access to your Nightscout data, you need to gather two things:
+### Prerequisite: Nightscout access
 
-1. Your Nightscout instance address (URL)
-2. An _access token_ for reading the data via Nightscout's built-in API.
+To provide access to your Nightscout data, you need to check three things:
 
-- You can create a token by going to your Nightscout menu > Admin Tools > Subjects - People, Devices > Add new Subject.
-- Set `Name` to whatever you like, e.g. `glucoscape`
-- Set `Roles` to `readable`
+1. Find your Nightscout instance address (URL).
+2. Create an **access token** which Glucoscape will use as a password when talking to Nightscout.
+    - You can create a token by going to your Nightscout menu > Admin Tools > Subjects - People, Devices > Add new Subject.
+    - Set `Name` to whatever you like, e.g. `glucoscape`.
+    - Set `Roles` to `readable`.
+3. Make sure your Nightscout instance **has CORS enabled**.
+    - Add `cors` to the list of enabled plug-ins.
+    - See [Nightscout docs](https://nightscout.github.io/nightscout/setup_variables/#cors-cors) for details.
 
 ### Use the app directly on GitHub
 
