@@ -19,10 +19,11 @@ export function renderHeatmap(settings: Settings, glucoseData: GlucoseRecord[]):
 
 function renderHeader(settings: Settings): string {
   let targetRange: [number, number] | [string, string] = settings.targetRangeMgdl
+  let units = "mg/dl"
   if (settings.displayUnits === "mmol") {
     targetRange = targetRange.map((x) => (x / MMOL_TO_MGDL).toFixed(1)) as [string, string]
+    units = "mmol/l"
   }
-  const units = settings.displayUnits === "mmol" ? "mmol/l" : "mg/dl"
   return `
     <header>
       <div class="spacer"></div>
