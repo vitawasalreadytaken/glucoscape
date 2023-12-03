@@ -51,10 +51,15 @@ Note that the address and access token will be a part of your bookmarked address
 4. Open `build/index.html` in your browser
 5. Fill in your Nightscout address and access token and click _Connect_
 
+## See also
+
+I have also built [Koboscout](https://github.com/vitawasalreadytaken/koboscout), an 'ambient' app showing
+a chart of your latest CGM readings on an e-reader device or tablet.
+
 ## Contributing
 
 I welcome contributions from the community. If you have suggestions, bug reports, or would like to contribute code, please open an issue or pull request here on GitHub.
 
 ## License
 
-This project is licensed under the MIT License - see the LICENSE.md file for details.
+This project is licensed under the MIT License - see the LICENSE file for details.
